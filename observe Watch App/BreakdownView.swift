@@ -27,34 +27,6 @@ struct BreakdownView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            // Top section with back button and time
-            HStack {
-                Button(action: {}) {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.body)
-                }
-                .buttonStyle(.plain)
-                .frame(width: 32, height: 32)
-                .background(.white)
-                .clipShape(Circle())
-                
-                Spacer()
-                
-                Text(timeString)
-                    .font(.system(size: 16, weight: .medium))
-                    .foregroundColor(.body)
-            }
-            .padding(.horizontal, 16)
-            .padding(.top, 8)
-            
-            // Title
-            Text("Breakdown")
-                .font(.system(size: 17, weight: .medium))
-                .foregroundColor(.body)
-                .padding(.top, 8)
-            
-            Spacer()
             
             // Breakdown items
             VStack(spacing: 4) {
@@ -86,7 +58,7 @@ struct BreakdownView: View {
                 .lineLimit(nil)
                 .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 16)
-                .padding(.top, 8)
+                // .padding(.top, 8)
             
             Spacer()
             
@@ -106,13 +78,9 @@ struct BreakdownView: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
         }
+        .navigationTitle("Breakdown")
+        .navigationBarTitleDisplayMode(.inline)
         .background(Color.bgButtons)
-    }
-    
-    private var timeString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: Date())
     }
 }
 
