@@ -26,61 +26,65 @@ struct BreakdownView: View {
     }
     
     var body: some View {
-        VStack(spacing: 16) {
-            
-            // Breakdown items
-            VStack(spacing: 4) {
-                BreakdownItem(
-                    title: "Breath",
-                    duration: breathDuration,
-                    color: .breathe
-                )
+        GeometryReader { geometry in
+            VStack(spacing: 16) {
                 
-                BreakdownItem(
-                    title: "Body",
-                    duration: bodyDuration,
-                    color: .body
-                )
-                
-                BreakdownItem(
-                    title: "Gratefulness",
-                    duration: gratefulnessDuration,
-                    color: .gratefulness
-                )
-            }
-            .padding(.horizontal, 16)
-            
-            // Instruction text
-            Text("Your watch will vibrate when you need to switch techniques.")
-                .font(.system(size: 12, weight: .regular))
-                .foregroundColor(.body.opacity(0.7))
-                .multilineTextAlignment(.leading)
-                .lineLimit(nil)
-                .fixedSize(horizontal: false, vertical: true)
+                // Breakdown items
+                VStack(spacing: 4) {
+                    BreakdownItem(
+                        title: "Breath",
+                        duration: breathDuration,
+                        color: .breathe
+                    )
+                    
+                    BreakdownItem(
+                        title: "Body",
+                        duration: bodyDuration,
+                        color: .body
+                    )
+                    
+                    BreakdownItem(
+                        title: "Gratefulness",
+                        duration: gratefulnessDuration,
+                        color: .gratefulness
+                    )
+                }
                 .padding(.horizontal, 16)
-                // .padding(.top, 8)
-            
-            Spacer()
-            
-            // Play button
-            Button(action: {
-                // TODO: Start meditation session
-            }) {
-                Image(systemName: "play.fill")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
+                
+                // Instruction text
+                Text("Your watch will vibrate when you need to switch techniques.")
+                    .font(.system(size: 12, weight: .regular))
+                    .foregroundColor(.body.opacity(0.7))
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 16)
+                    // .padding(.top, 8)
+                
+                Spacer()
+                
+                // Play button
+                Button(action: {
+                    // TODO: Start meditation session
+                }) {
+                    Image(systemName: "play.fill")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                }
+                .buttonStyle(.plain)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 16)
             }
-            .buttonStyle(.plain)
-            .padding(.horizontal, 16)
-            .padding(.bottom, 16)
+            .padding(.top, 8)
         }
         .navigationTitle("Breakdown")
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.bgButtons)
+        .ignoresSafeArea(.container, edges: .bottom)
     }
 }
 
