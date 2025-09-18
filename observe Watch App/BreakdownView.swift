@@ -57,7 +57,7 @@ struct BreakdownView: View {
             Spacer()
             
             // Breakdown items
-            VStack(spacing: 10) {
+            VStack(spacing: 4) {
                 BreakdownItem(
                     title: "Breath",
                     duration: breathDuration,
@@ -83,6 +83,8 @@ struct BreakdownView: View {
                 .font(.system(size: 12, weight: .regular))
                 .foregroundColor(.body.opacity(0.7))
                 .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
             
@@ -127,12 +129,14 @@ struct BreakdownItem: View {
             
             Text(title)
                 .font(.system(size: 14, weight: .regular))
+                .lineSpacing(2.5) // 14pt font + 2.5pt spacing = 16.5pt line height
                 .foregroundColor(.body)
             
             Spacer()
             
             Text("\(duration)m")
                 .font(.system(size: 14, weight: .regular))
+                .lineSpacing(2.5)
                 .foregroundColor(.body.opacity(0.7))
         }
         .padding(.horizontal, 4)
