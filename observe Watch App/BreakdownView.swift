@@ -80,9 +80,9 @@ struct BreakdownView: View {
             
             // Instruction text
             Text("Your watch will vibrate when you need to switch techniques.")
-                .font(.system(size: 14, weight: .regular))
+                .font(.system(size: 12, weight: .regular))
                 .foregroundColor(.body.opacity(0.7))
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
                 .padding(.horizontal, 16)
                 .padding(.top, 8)
             
@@ -123,16 +123,16 @@ struct BreakdownItem: View {
         HStack {
             Circle()
                 .fill(color)
-                .frame(width: 12, height: 12)
+                .frame(width: 10.5, height: 10.5)
             
             Text(title)
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 14, weight: .regular))
                 .foregroundColor(.body)
             
             Spacer()
             
             Text("\(duration)m")
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 14, weight: .regular))
                 .foregroundColor(.body.opacity(0.7))
         }
         .padding(.horizontal, 4)
