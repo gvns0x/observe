@@ -12,35 +12,10 @@ struct CustomTimeView: View {
     @State private var navigateToBreakdown = false
     
     var body: some View {
-        VStack(spacing: 16) {
-            // Top section with back button and time
-            HStack {
-                Button(action: {}) {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.body)
-                }
-                .buttonStyle(.plain)
-                .frame(width: 32, height: 32)
-                .background(.white)
-                .clipShape(Circle())
+        GeometryReader { geometry in
+            VStack(spacing: 16) {
                 
                 Spacer()
-                
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text(timeString)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.body)
-                    
-                    Text("Duration")
-                        .font(.system(size: 18, weight: .bold))
-                        .foregroundColor(.body)
-                }
-            }
-            .padding(.horizontal, 16)
-            .padding(.top, 8)
-            
-            Spacer()
             
             // Duration display
             HStack(alignment: .bottom, spacing: 4) {
@@ -85,17 +60,16 @@ struct CustomTimeView: View {
             .opacity(customDuration == 0.0 ? 0.5 : 1.0)
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
+            }
+            .padding(.top, 8)
         }
+        .navigationTitle("Duration")
+        .navigationBarTitleDisplayMode(.inline)
         .background(Color.bgButtons)
+        .ignoresSafeArea(.container, edges: .bottom)
         .navigationDestination(isPresented: $navigateToBreakdown) {
             BreakdownView(totalDuration: Int(customDuration))
         }
-    }
-    
-    private var timeString: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        return formatter.string(from: Date())
     }
 }
 

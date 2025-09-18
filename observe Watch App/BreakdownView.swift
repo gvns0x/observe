@@ -27,7 +27,7 @@ struct BreakdownView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 16) {
+            VStack(spacing: 14.5) {
                 
                 // Breakdown items
                 VStack(spacing: 4) {
@@ -49,16 +49,16 @@ struct BreakdownView: View {
                         color: .gratefulness
                     )
                 }
-                .padding(.horizontal, 16)
+                .padding(.horizontal, 13)
                 
                 // Instruction text
-                Text("Your watch will vibrate when you need to switch techniques.")
+                Text("Your watch will vibrate to switch techniques.")
                     .font(.system(size: 12, weight: .regular))
                     .foregroundColor(.body.opacity(0.7))
                     .multilineTextAlignment(.leading)
                     .lineLimit(nil)
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.horizontal, 16)
+                    .padding(.horizontal, 13)
                     // .padding(.top, 8)
                 
                 Spacer()
